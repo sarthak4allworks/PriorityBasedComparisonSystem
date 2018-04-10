@@ -738,7 +738,30 @@ function hd(x)
 
 function gyb()
 {
+  // debugger;
     var x = document.getElementById("cone");
-    
+    if(($('#out1').css('display') == 'block') || ($('#out2').css('display') == 'block') || ($('#out3').css('display') == 'block') || ($('#out4').css('display') == 'block'))
+    {
+      var y = document.getElementById("cd1").className;
+      $('#out1').hide();
+      $('#cdiv1').show();
+      $('#out2').hide();
+      $('#cdiv2').show();
+      $('#out3').hide();
+      $('#cdiv3').show();
+      $('#out4').hide();
+      $('#cdiv4').show();
+      // alert(document.getElementById('comp').length);
+      $("button[id='comp'][name='compare']").each(function(){
+        $("button[id='comp'][name='compare']").show();
+        $("button[id='comp1'][name='compare']").hide();
+      });
+    }
     x.style.display = "none";
 }
+
+$(document).click(function(event) {
+    if ( !$(event.target).hasClass('ex2')) {
+         $(".ex2").hide();
+    }
+});
