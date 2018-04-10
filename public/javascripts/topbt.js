@@ -17,6 +17,7 @@ function topFunction() {
 
 function displayDiv1()
 {
+
     if(document.getElementById("sideleft11").style.display == "none")
         {
             document.getElementById("sideleft11").style.display = "block";
@@ -434,4 +435,310 @@ function prevFun()
     document.getElementById("sec").text = second-1;
     document.getElementById("thir").text = third-1;
   }
+}
+
+function openCompare(y)
+{
+  var x = document.getElementById("cone");
+  if($('#cone').css('display') == 'none')
+  {
+    x.style.display = "block";
+  }
+  // debugger;
+  var z = y.id;
+  var xy = y.className;
+  if($('#cdiv1').css('display') == 'block')
+  {
+    $(y).hide();
+    $('#comp1.'+xy).show();
+    $('#cdiv1').css('display', 'none');
+    // var xz = "http://localhost:3000/pro/"+xy;
+    // alert(xz);
+
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: xy
+        }
+      ),
+      success: function(response)
+      {
+        $('#td1').prepend('<div id="out1" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="1" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd1" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+    });
+
+    // $('#out1').css('display', 'block');
+  }
+  else if($('#cdiv2').css('display') == 'block')
+  {
+    $(y).hide();
+    $('#comp1.'+xy).show();
+    $('#cdiv2').css('display', 'none');
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: xy
+        }
+      ),
+      success: function(response)
+      {
+        $('#td2').prepend('<div id="out2" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="2" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd2" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+    });
+    // $('#out2').css('display', 'block');
+  }
+  else if($('#cdiv3').css('display') == 'block')
+  {
+    $(y).hide();
+    $('#comp1.'+xy).show();
+    $('#cdiv3').css('display', 'none');
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: xy
+        }
+      ),
+      success: function(response)
+      {
+        $('#td3').prepend('<div id="out3" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="3" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd3" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+    });
+    // $('#out3').css('display', 'block');
+  }
+  else if($('#cdiv4').css('display') == 'block')
+  {
+    $(y).hide();
+    $('#comp1.'+xy).show();
+    $('#cdiv4').css('display', 'none');
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: xy
+        }
+      ),
+      success: function(response)
+      {
+        $('#td4').prepend('<div id="out4" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="4" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd4" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+    });
+    // $('#out4').css('display', 'block');
+  }
+  else
+  {
+    alert("You can't compare more than 4 products at a time");
+  }
+}
+
+function openCompare2(y)
+{
+  var z = y.id;
+  var xy = y.className;
+  if($('#cdiv1').css('display') == 'block')
+  {
+    $(y).hide();
+    $('#comp1.'+z).show();
+    $('#cdiv1').css('display', 'none');
+    // var xz = "http://localhost:3000/pro/"+xy;
+    // alert(xz);
+
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: z
+        }
+      ),
+      success: function(response)
+      {
+        $('#td1').prepend('<div id="out1" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="1" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd1" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+    });
+
+    // $('#out1').css('display', 'block');
+  }
+  else if($('#cdiv2').css('display') == 'block')
+  {
+    var num1 = $('#1').text();
+    // alert(num1);
+    $(y).hide();
+    $('#comp.'+z).hide();
+    $('#comp1.'+z).show();
+    // $('#cdiv2').css('display', 'none');
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: z
+        }
+      ),
+      success: function(response)
+      {
+        if(response.name == num1)
+        {
+          alert("This laptop is already selected for comparison, Please select any other laptop");
+        }
+        else{
+          $('#cdiv2').css('display', 'none');
+        $('#td2').prepend('<div id="out2" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="2" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd2" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+      }
+    });
+    // $('#out2').css('display', 'block');
+  }
+  else if($('#cdiv3').css('display') == 'block')
+  {
+    var num1 = $('#1').text();
+    var num2 = $('#2').text();
+    $(y).hide();
+    $('#comp.'+z).hide();
+    $('#comp1.'+z).show();
+    // $('#cdiv3').css('display', 'none');
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: z
+        }
+      ),
+      success: function(response)
+      {
+        if(response.name == num1 || response.name == num2)
+        {
+          alert("This laptop is already selected for comparison, Please select any other laptop");
+        }
+        else {
+          $('#cdiv3').css('display', 'none');
+          $('#td3').prepend('<div id="out3" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="3" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd3" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+        }
+      }
+    });
+    // $('#out3').css('display', 'block');
+  }
+  else if($('#cdiv4').css('display') == 'block')
+  {
+    var num1 = $('#1').text();
+    var num2 = $('#2').text();
+    var num3 = $('#3').text();
+    $(y).hide();
+    $('#comp.'+z).hide();
+    $('#comp1.'+z).show();
+    $.ajax({
+      url: "http://localhost:3000/ajo",
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          KEY: z
+        }
+      ),
+      success: function(response)
+      {
+        if(response.name == num1 || response.name == num2 || response.name == num3)
+        {
+          alert("This laptop is already selected for comparison, Please select any other laptop");
+        }
+        else {
+          $('#cdiv4').css('display', 'none');
+        $('#td4').prepend('<div id="out4" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a id="4" href="http://localhost:3000/pro/'+response.key+'">'+response.name+'</a></center></div><div class="cdcross"><a id="cd4" class="'+response.key+'" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+      }
+      }
+    });
+    // $('#out4').css('display', 'block');
+  }
+  else
+  {
+    alert("You can't compare more than 4 products at a time");
+  }
+}
+
+function openCompare1(x)
+{
+  var z = x.className;
+  $('#comp1.'+z).hide();
+  $('#comp.'+z).show();
+  $.ajax({
+    url: "http://localhost:3000/ajo",
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(
+      {
+        KEY: z
+      }
+    ),
+    success: function(response)
+    {
+      // debugger;
+      var name = response.name;
+      var txt = $("#1").text();
+      if(name == txt)
+      {
+        $('#out1').hide();
+        $('#cdiv1').show();
+      }
+      else {
+        txt = $('#2').text();
+        if(name == txt)
+        {
+          $('#out2').hide();
+          $('#cdiv2').show();
+        }
+        else {
+          txt = $('#3').text();
+          if(name == txt)
+          {
+            $('#out3').hide();
+            $('#cdiv3').show();
+          }
+          else {
+            $('#out4').hide();
+            $('#cdiv4').show();
+          }
+        }
+      }
+      // $('#td4').prepend('<div id="out4" class="out1"><div class="cd1img"><center><img src="'+response.img+'" alt="no image" height="55px" width="40px"></center></div><div class="cd2name"><center><a href="#">'+response.name+'</a></center></div><div class="cdcross"><a id="cd4" href="#" onclick="hd(this)"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
+    }
+  });
+}
+
+function hd(x)
+{
+  // debugger;
+    var id = x.id;
+    var num = id.slice(-1);
+    var c = x.className;
+    // alert(c);
+    // document.getElementById("comp1").className = c;
+    $('#comp1.'+c).hide();
+    $('#comp.'+c).show();
+    var id1 = "out"+num;
+    var id2 = "cdiv"+num;
+    var x = document.getElementById(id1);
+    var y = document.getElementById(id2);
+    x.style.display = "none";
+    y.style.display = "block";
+}
+
+function gyb()
+{
+    var x = document.getElementById("cone");
+    
+    x.style.display = "none";
 }

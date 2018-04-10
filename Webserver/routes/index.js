@@ -13,4 +13,8 @@ router.post('/fk', control.feed);
 
 router.post('/filter',control.filter);
 
+router.post('/search', control.search);
+
+router.post('/ajo', control.key_i);
+
 module.exports = router;

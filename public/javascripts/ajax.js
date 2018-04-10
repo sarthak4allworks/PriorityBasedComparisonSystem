@@ -1,5 +1,81 @@
 $('document').ready(function(){
   // alert("We are here");
+  $(".inpu1").keyup(function(){
+    //  debugger;
+    var v = $(".inpu1").val();
+    $.ajax({
+      url: 'http://localhost:3000/search',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          dat: v
+        }
+      ),
+      success: function(response)
+      {
+        // alert("here in ajax "+response[0].img);
+        console.log("Success "+response.length);
+        var len = response.length;
+        // alert("response from server is "+response);
+        // alert("length is "+len+" "+v.length);
+        var ln = v.length;
+        if(ln>0)
+        {
+          // alert("Inside here");
+          for(var i=0 ; i<len ; i++)
+          {
+              // $('.ex2').empty();
+            $('.ex2').css('display', 'block');
+            $('#exc').append('<tr><td class="searchPro"><a href=http://localhost:3000/pro/'+response[i].key+'>'+response[i].name+'</a></td></tr>');
+          }
+        }
+        else {
+          $('.ex2').css('display', 'none');
+        }
+      }
+    });
+  });
+
+  $("#search1").keyup(function(){
+    //  debugger;
+    // alert("We are here");
+    var v = $("#search1").val();
+    // alert(v);
+    $.ajax({
+      url: 'http://localhost:3000/search',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(
+        {
+          dat: v
+        }
+      ),
+      success: function(response)
+      {
+        // alert("here in ajax "+response[0].img);
+        console.log("Success "+response.length);
+        var len = response.length;
+        // alert("response from server is "+response);
+        // alert("length is "+len+" "+v.length);
+        var ln = v.length;
+        if(ln>0)
+        {
+          // alert("Inside here");
+          for(var i=0 ; i<len ; i++)
+          {
+              // $('.ex2').empty();
+            $('#exam1').css('display', 'block');
+            $('#exam1').append('<tr><td id='+response[i].key+' onclick="openCompare2(this)" class='+response[i].key+'><a href="#">'+response[i].name+'</a></td></tr>');
+          }
+        }
+        else {
+          $('#exam1').css('display', 'none');
+        }
+      }
+    });
+  });
+
   var priceArray = [];
   var brandsArray = [];
   // var typeArray = [];

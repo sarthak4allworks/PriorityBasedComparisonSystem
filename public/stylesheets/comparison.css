@@ -1,0 +1,163 @@
+#cone
+{
+    position: fixed;
+    height: auto;
+    width: auto;
+    margin-bottom: 5px;
+    top: 520px;
+    /*top: 220px;*/
+    left: 400px;
+    display: none;
+    background-color: white;
+    z-index: 2;
+}
+
+#ctr1
+{
+    background-color: lightcyan;
+}
+
+.cdiv
+{
+    background-color: #F8F8F8;
+    padding: 10px;
+    margin: 15px;
+    height: 75px;
+    width: 150px;
+/*    display: none;*/
+}
+
+#cc
+{
+    color: green;
+}
+
+.cdiv1
+{
+    background-color: white;
+}
+
+#cdiv1
+{
+  display: block;
+}
+
+#cdiv2
+{
+  display: block;
+}
+
+#cdiv3
+{
+  display: block;
+}
+
+#cdiv4
+{
+  display: block;
+}
+
+.button4 {border-radius: 12px;}
+
+.button {
+    background-color: lightblue;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px .5px;
+    cursor: pointer;
+}
+
+.cinside
+{
+    margin-top: 30px;
+    background-color: lightgreen;
+    border-radius: 8px;
+    color: white;
+    height: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+#rdiv2
+{
+    width: 80px;
+/*    padding-right: 5px;*/
+    margin-right: 3px;
+    padding-left: 3px;
+    float: right;
+    color: red;
+    cursor: pointer;
+}
+
+.out1
+{
+    background-color: #F8F8F8;
+    padding: 10px;
+    margin: 15px;
+    height: 75px;
+    width: 150px;
+    /* display: none; */
+}
+
+.cd1img
+{
+    float: left;
+    width: 30px;
+    height: 75px;
+}
+
+.cd2name
+{
+    float: left;
+    width: 90px;
+    height: 75px;
+    overflow-y: scroll;
+}
+
+.cdcross
+{
+    float: left;
+    width: 5px;
+    height: 75px;
+}
+
+#mod
+{
+    background-color: #CBFFF5;
+}
+
+#mod1in
+{
+    color: blue;
+    font-size: 25px;
+    font-weight: 200;
+}
+
+#mod2in
+{
+    color: gray;
+}
+
+#search1
+{
+    width: 400px;
+    border-radius: 5px;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+div.ex1 {
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    overflow: scroll;
+    /*display: none;*/
+}
