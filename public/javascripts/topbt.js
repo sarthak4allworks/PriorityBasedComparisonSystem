@@ -6,6 +6,12 @@ function scrollFunction() {
     } else {
         document.getElementById("myBtn").style.display = "none";
     }
+    if ($(window).scrollTop() > 300) {
+        $('#zcmp').show();
+    }
+    else {
+        $('#zcmp').hide();
+    }
 }
 
 function topFunction() {
@@ -764,4 +770,213 @@ $(document).click(function(event) {
     if ( !$(event.target).hasClass('ex2')) {
          $(".ex2").hide();
     }
+});
+
+$('#lt').click(function(){
+  $("#lt").off('click');
+  $('#drp1').show();
+  // $('#lt').on('click', function(){
+  //   alert("Again enabled");
+  // });
+});
+
+$('#btnn1').click(function(){
+  var val1 = $('#select1').val();
+  if(val1 == null)
+  {
+    alert("Please select your first priority");
+    return false;
+  }
+  else {
+    $('#btnn1').hide();
+    $('#select1').attr('disabled', true);
+    $('#drp2').show();
+    if(val1 == 'Processor')
+    {
+      // alert(val1);
+      $('#op11').hide();
+      $('#op111').hide();
+      $('#op1111').hide();
+      $('#op11111').hide();
+    }
+    else if(val1 == 'RAM')
+    {
+      // alert(val1);
+      $('#op22').hide();
+      $('#op222').hide();
+      $('#op2222').hide();
+      $('#op22222').hide();
+    }
+    else if(val1 == 'Hard_Disc')
+    {
+      // alert(val1);
+      $('#op33').hide();
+      $('#op333').hide();
+      $('#op3333').hide();
+      $('#op33333').hide();
+    }
+    else if(val1 == 'Battary')
+    {
+      // alert(val1);
+      $('#op44').hide();
+      $('#op444').hide();
+      $('#op4444').hide();
+      $('#op44444').hide();
+    }
+    else
+    {
+      // alert(val1);
+      $('#op55').hide();
+      $('#op555').hide();
+      $('#op5555').hide();
+      $('#op55555').hide();
+    }
+    $('#nc').show();
+  }
+});
+
+$('#btnn2').click(function(){
+  var val1 = $('#select2').val();
+  if(val1 == null)
+  {
+    alert("Please select your Second priority");
+    return false;
+  }
+  else {
+    $('#btnn2').hide();
+    $('#select2').attr('disabled', true);
+    $('#drp3').show();
+    if(val1 == 'Processor')
+    {
+      // alert(val1);
+      $('#op111').hide();
+      $('#op1111').hide();
+      $('#op11111').hide();
+    }
+    else if(val1 == 'RAM')
+    {
+      // alert(val1);
+      $('#op222').hide();
+      $('#op2222').hide();
+      $('#op22222').hide();
+    }
+    else if(val1 == 'Hard_Disc')
+    {
+      // alert(val1);
+      $('#op333').hide();
+      $('#op3333').hide();
+      $('#op33333').hide();
+    }
+    else if(val1 == 'Battary')
+    {
+      // alert(val1);
+      $('#op444').hide();
+      $('#op4444').hide();
+      $('#op44444').hide();
+    }
+    else
+    {
+      // alert(val1);
+      $('#op555').hide();
+      $('#op5555').hide();
+      $('#op55555').hide();
+    }
+  }
+});
+
+$('#btnn3').click(function(){
+  var val1 = $('#select3').val();
+  if(val1 == null)
+  {
+    alert("Please select your Third priority");
+    return false;
+  }
+  else {
+    $('#btnn3').hide();
+    $('#select3').attr('disabled', true);
+    $('#drp4').show();
+    if(val1 == 'Processor')
+    {
+      // alert(val1);
+      $('#op1111').hide();
+      $('#op11111').hide();
+    }
+    else if(val1 == 'RAM')
+    {
+      // alert(val1);
+      $('#op2222').hide();
+      $('#op22222').hide();
+    }
+    else if(val1 == 'Hard_Disc')
+    {
+      // alert(val1);
+      $('#op3333').hide();
+      $('#op33333').hide();
+    }
+    else if(val1 == 'Battary')
+    {
+      // alert(val1);
+      $('#op4444').hide();
+      $('#op44444').hide();
+    }
+    else
+    {
+      // alert(val1);
+      $('#op5555').hide();
+      $('#op55555').hide();
+    }
+  }
+});
+
+$('#btnn4').click(function(){
+  var val1 = $('#select4').val();
+  if(val1 == null)
+  {
+    alert("Please select your Fourth priority");
+    return false;
+  }
+  else {
+    $('#btnn4').hide();
+    $('#select4').attr('disabled', true);
+    $('#drp5').show();
+    if(val1 == 'Processor')
+    {
+      // alert(val1);
+      $('#op11111').hide();
+    }
+    else if(val1 == 'RAM')
+    {
+      // alert(val1);
+      $('#op22222').hide();
+    }
+    else if(val1 == 'Hard_Disc')
+    {
+      // alert(val1);
+      $('#op33333').hide();
+    }
+    else if(val1 == 'Battary')
+    {
+      // alert(val1);
+      $('#op44444').hide();
+    }
+    else
+    {
+      // alert(val1);
+      $('#op55555').hide();
+    }
+  }
+});
+
+$('#btnn5').click(function(){
+  var val1 = $('#select5').val();
+  if(val1 == null)
+  {
+    alert("Please select your Fifth priority");
+    return false;
+  }
+  else {
+    $('#btnn5').hide();
+    $('#select5').attr('disabled', true);
+    alert("You can select maximum five attributes");
+  }
 });

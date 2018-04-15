@@ -189,8 +189,6 @@ $('document').ready(function(){
     $("input[name='w']:checked").each(function(){
       weightArray.push($(this).val());
     });
-    // alert(priceArray);
-    // alert(brandsArray);
 
     $.ajax({
       url: 'http://localhost:3000/filter',
