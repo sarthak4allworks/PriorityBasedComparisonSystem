@@ -67,85 +67,70 @@ module.exports.key_i = function(req, res, next)
 
 module.exports.filter = function(req, res, next)
 {
-  console.log("we are here in filter api");
+  // console.log("we are here in filter api");
   var parr = req.body.pr;
   var brand = req.body.brand;
-  // var type = req.body.type;
   var scn = req.body.scn;
   var screenresolution = req.body.screenresolution;
   var cpu = req.body.cpu;
-  var cpuSpeed = req.body.cpuSpeed;
-  var cpuGeneration = req.body.cpuGeneration;
   var rpm = req.body.rpm;
   var hd = req.body.hd;
   var ram = req.body.ram;
-  var graphics = req.body.graphics;
-  var features = req.body.features;
   var os = req.body.os;
   var battery = req.body.battery;
-  var weight = req.body.weight;
 
   var parrl = parr.length;
   var brandl = brand.length;
-  // var typel = type.length;
   var scnl = scn.length;
   var screenresolutionl = screenresolution.length;
   var cpul = cpu.length;
-  var cpuSpeedl = cpuSpeed.length;
-  var cpuGenerationl = cpuGeneration.length;
   var rpml = rpm.length;
   var hdl = hd.length;
   var raml = ram.length;
-  var graphicsl = graphics.length;
-  var featuresl = features.length;
   var osl = os.length;
   var batteryl = battery.length;
-  var weightl = weight.length;
 
-  console.log("price length is "+parrl);
-  console.log("brand length is "+brandl);
-  console.log("price "+parr);
-  console.log("brand "+brand);
-  // console.log("type "+type);
-  console.log("screen "+scn);
-  console.log("screenresolution "+screenresolution);
-  console.log("cpu "+cpu);
-  console.log("cpu speed "+cpuSpeed);
-  console.log("cpu generation "+cpuGeneration);
-  console.log("rpm "+rpm);
-  console.log("hd "+hd);
-  console.log("ram "+ram);
-  console.log("graphics "+graphics);
-  console.log("features "+features);
-  console.log("os "+os);
-  console.log("battery "+battery);
-  console.log("weight "+weight);
-  // var length = arr.length;
-  // var tp = typeof arr[0];
-  if((parrl == 0 && brandl == 0 && scnl == 0 && screenresolutionl == 0 && cpul == 0 && cpuSpeedl == 0 && cpuGenerationl == 0
-  && rpml == 0 && hdl == 0 && raml == 0 && graphicsl == 0 && featuresl == 0 && osl == 0 && batteryl == 0 && weightl == 0) ||
-  (parrl == 8 && brandl == 18 && scnl == 7 && screenresolutionl == 4 && cpul == 6 && cpuSpeedl == 4 && cpuGenerationl == 6
-  && rpml == 6 && hdl == 4 && raml == 5 && graphicsl == 4 && featuresl == 5 && osl == 10 && batteryl == 4 && weightl == 4 ))
+  console.log(parr);
+
+  // console.log("price length is "+parrl);
+  // console.log("brand length is "+brandl);
+  // console.log("price "+parr);
+  // console.log("brand "+brand);
+  // console.log("screen "+scn);
+  // console.log("screenresolution "+screenresolution);
+  // console.log("cpu "+cpu);
+  // console.log("rpm "+rpm);
+  // console.log("hd "+hd);
+  // console.log("ram "+ram);
+  // console.log("os "+os);
+  // console.log("battery "+battery);
+
+  if((parrl == 0 && brandl == 0 && scnl == 0 && screenresolutionl == 0 && cpul == 0 && rpml == 0 && hdl == 0 && raml == 0 && osl == 0 && batteryl == 0) ||
+  (parrl == 8 && brandl == 18 && scnl == 7 && screenresolutionl == 4 && cpul == 6 && rpml == 6 && hdl == 4 && raml == 5 && osl == 10 && batteryl == 4))
   {
     console.log("API SUCCESS");
     res.json({STATUS:"SUCCESS"});
   }
   else {
-    console.log("I am here with filtering 1");
-    console.log(brand);
-    product.find({$and:[{"specifications.full_specs.Processor.Brand": {$in: cpu}}, {brand:{$in: brand}}]}).exec(function(error, result){
+    // console.log("I am here with filtering 1");
+    console.log(scn);
+    console.log(scn[0]+" "+scn[1]+" "+scn[scnl-1]);
+    // product.find({$and:[{"specifications.full_specs.Processor.Brand": {$in: cpu}}]}).find({brand:{$in: brand}})
+    // console.log(parr[0]+" "+parr[parrl-1]);
+    // product.find({price:{$gt:parr[0], $lt:parr[parrl-1]}})
+    product.find({$or:[{"specifications.full_specs.Display.Touch":scn[0]},{"specifications.full_specs.Display.Size":{$gte:scn[1], $lte:scn[scnl-1]}}]}).exec(function(error, result){
       if(error){
         console.log("here is an error in filtering");
       }
       else {
-        console.log(result);
+        // console.log(result);
         var l1 = result.length;
-            console.log("Result after filtering is ");
-            console.log(result);
-            console.log(cpu);
+            // console.log("Result after filtering is ");
+            // console.log(result);
+            // console.log(cpu);
                     console.log(l1);
-            console.log("I am here with filtering 2");
-            console.log("API SUCCESSOR");
+            // console.log("I am here with filtering 2");
+            // console.log("API SUCCESSOR");
             res.json({STATUS:"SUCCESSOR"});
       }
     });

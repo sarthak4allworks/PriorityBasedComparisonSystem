@@ -174,8 +174,8 @@ module.exports.filter = function(req, res, next)
       return res.status(500).send(error);
     }
     else {
-      console.log(body);
-      console.log(body.STATUS);
+      // console.log(body);
+      // console.log(body.STATUS);
       // if((body.STATUS).valueOf() === "SUCCESS")
       // {
       //   console.log("Here");

@@ -110,60 +110,137 @@ $('document').ready(function(){
 
   var priceArray = [];
   var brandsArray = [];
-  // var typeArray = [];
   var screenArray = [];
   var screenResolutionArray = [];
   var cpuArray = [];
-  var cpuSpeedArray = [];
-  var cpuGenerationArray = [];
   var hdRPMArray = [];
   var hdArray = [];
   var ramArray = [];
-  var graphicsArray = [];
-  var featuresArray = [];
   var osArray = [];
   var batteryArray = [];
-  var weightArray = [];
   $(".common").click(function(){
     priceArray = [];
     brandsArray = [];
-    // typeArray = [];
     screenArray = [];
     screenResolutionArray = [];
     cpuArray = [];
-    cpuSpeedArray = [];
-    cpuGenerationArray = [];
     hdRPMArray = [];
     hdArray = [];
     ramArray = [];
-    graphicsArray = [];
-    featuresArray = [];
     osArray = [];
     batteryArray = [];
-    weightArray = [];
     $("input[name='price']:checked").each(function(){
-      priceArray.push($(this).val());
+      var pr = $(this).val();
+      if(pr == "1")
+      {
+        priceArray.push("0");
+        priceArray.push("25001");
+      }
+      if(pr == "2")
+      {
+        priceArray.push("25000");
+        priceArray.push("30001");
+      }
+      if(pr == "3")
+      {
+        priceArray.push("30000");
+        priceArray.push("40001");
+      }
+      if(pr == "4")
+      {
+        priceArray.push("40000");
+        priceArray.push("50001");
+      }
+      if(pr == "5")
+      {
+        priceArray.push("50000");
+        priceArray.push("70001");
+      }
+      if(pr == "6")
+      {
+        priceArray.push("70000");
+        priceArray.push("100000");
+      }
+      if(pr == "7")
+      {
+        priceArray.push("100000");
+        priceArray.push("120000");
+      }
+      if(pr == "8")
+      {
+        priceArray.push("70000");
+        priceArray.push("999999");
+      }
     });
     $("input[name='brand']:checked").each(function(){
       brandsArray.push($(this).val());
     });
-    // $("input[name='type']:checked").each(function(){
-    //   typeArray.push($(this).val());
-    // });
     $("input[name='screen']:checked").each(function(){
-      screenArray.push($(this).val());
+      var scr = $(this).val();
+      if(scr == "Yes")
+      {
+        screenArray.push(scr);
+      }
+      if(scr == "1")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("0 inches");
+          screenArray.push("12 inches");
+      }
+      if(scr == "2")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("12 inches");
+          screenArray.push("13 inches");
+      }
+      if(scr == "3")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("13 inches");
+          screenArray.push("14 inches");
+      }
+      if(scr == "4")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("14 inches");
+          screenArray.push("15 inches");
+      }
+      if(scr == "5")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("15 inches");
+          screenArray.push("16 inches");
+      }
+      if(scr == "6")
+      {
+        if(screenArray[0] != "Yes")
+        {
+          screenArray[0] = "No";
+        }
+          screenArray.push("16 inches");
+          screenArray.push("100 inches");
+      }
     });
     $("input[name='screenresolution']:checked").each(function(){
       screenResolutionArray.push($(this).val());
     });
     $("input[name='cpu']:checked").each(function(){
       cpuArray.push($(this).val());
-    });
-    $("input[name='cpug']:checked").each(function(){
-      cpuSpeedArray.push($(this).val());
-    });
-    $("input[name='cpus']:checked").each(function(){
-      cpuGenerationArray.push($(this).val());
     });
     $("input[name='rpm']:checked").each(function(){
       hdRPMArray.push($(this).val());
@@ -174,20 +251,11 @@ $('document').ready(function(){
     $("input[name='ram']:checked").each(function(){
       ramArray.push($(this).val());
     });
-    $("input[name='graphics']:checked").each(function(){
-      graphicsArray.push($(this).val());
-    });
-    $("input[name='features']:checked").each(function(){
-      featuresArray.push($(this).val());
-    });
     $("input[name='os']:checked").each(function(){
       osArray.push($(this).val());
     });
     $("input[name='bb']:checked").each(function(){
       batteryArray.push($(this).val());
-    });
-    $("input[name='w']:checked").each(function(){
-      weightArray.push($(this).val());
     });
 
     $.ajax({
@@ -198,20 +266,14 @@ $('document').ready(function(){
         {
           pr: priceArray,
           brand: brandsArray,
-          // type: typeArray,
           scn: screenArray,
           screenresolution: screenResolutionArray,
           cpu: cpuArray,
-          cpuSpeed: cpuSpeedArray,
-          cpuGeneration: cpuGenerationArray,
           rpm: hdRPMArray,
           hd: hdArray,
           ram: ramArray,
-          graphics: graphicsArray,
-          features: featuresArray,
           os: osArray,
-          battery: batteryArray,
-          weight: weightArray
+          battery: batteryArray
         }
       ),
       success: function(response)
