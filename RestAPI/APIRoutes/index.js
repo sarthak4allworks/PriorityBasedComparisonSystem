@@ -16,4 +16,6 @@ router.post('/filter', control.filter);
 
 router.post('/search', control.search);
 
+router.post('/compItems', control.compItems);
+
 module.exports = router;

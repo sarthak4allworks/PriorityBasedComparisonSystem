@@ -24,7 +24,26 @@ $('document').ready(function(){
         d = $('#cd4').attr('class');
         // alert(d);
       }
-      alert(a+" "+b+" "+c+" "+d);
+      // alert(a+" "+b+" "+c+" "+d);
+      $.ajax({
+        url: 'http://localhost:3000/compItems',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(
+          {
+            dat1: a,
+            dat2: b,
+            dat3: c,
+            dat4: d
+          }
+        ),
+        success: function(response)
+        {
+          console.log("Success "+response.length);
+          var len = response.length;
+          var ln = v.length;
+        }
+      });
     }
     else {
       alert("Please select minimum one product");
@@ -246,16 +265,142 @@ $('document').ready(function(){
       hdRPMArray.push($(this).val());
     });
     $("input[name='hd']:checked").each(function(){
-      hdArray.push($(this).val());
+      var val1 = $(this).val();
+      if(val1 == "1")
+      {
+        hdArray.push("320 GB");
+        hdArray.push("500 GB");
+        hdArray.push("720 GB");
+        hdArray.push("1 TB");
+      }
+      if(val1 == "2")
+      {
+        if(hdArray.length == 0)
+        {
+          hdArray.push("500 GB");
+          hdArray.push("720 GB");
+          hdArray.push("1 TB");
+        }
+      }
+      if(val1 == "3")
+      {
+        if(hdArray.length == 0)
+        {
+          hdArray.push("720 GB");
+          hdArray.push("1 TB");
+        }
+      }
+      if(val1 == "4")
+      {
+        if(hdArray.length == 0)
+        {
+          hdArray.push("1 TB");
+        }
+      }
     });
     $("input[name='ram']:checked").each(function(){
-      ramArray.push($(this).val());
+      var val1 = $(this).val();
+      if(val1 == "1")
+      {
+        ramArray.push("2 GB");
+        ramArray.push("3 GB");
+        ramArray.push("4 GB");
+        ramArray.push("6 GB");
+        ramArray.push("8 GB");
+      }
+      if(val1 == "2")
+      {
+        if(ramArray.length == 0)
+        {
+          ramArray.push("3 GB");
+          ramArray.push("4 GB");
+          ramArray.push("6 GB");
+          ramArray.push("8 GB");
+        }
+      }
+      if(val1 == "3")
+      {
+        if(ramArray.length == 0)
+        {
+          ramArray.push("4 GB");
+          ramArray.push("6 GB");
+          ramArray.push("8 GB");
+        }
+      }
+      if(val1 == "4")
+      {
+        if(ramArray.length == 0)
+        {
+          ramArray.push("6 GB");
+          ramArray.push("8 GB");
+        }
+      }
+      if(val1 == "5")
+      {
+        if(ramArray.length == 0)
+        {
+          ramArray.push("8 GB");
+        }
+      }
     });
     $("input[name='os']:checked").each(function(){
-      osArray.push($(this).val());
+      var val1 = $(this).val();
+      if(val1 == "1")
+      {
+          osArray.push("Windows 8 (64-bit)");
+          osArray.push("Windows 8.1 (64-bit)");
+      }
+      else if(val1 == "2")
+      {
+          osArray.push("Windows 7 (64-bit)");
+          osArray.push("Windows 7 Professional (64-bit)");
+          osArray.push("Windows 7 Home Premium");
+          osArray.push("Windows 7 Home Basic (32-bit)");
+          osArray.push("Windows 7 Professional (32-bit)");
+      }
+      else {
+          osArray.push($(this).val());
+      }
     });
     $("input[name='bb']:checked").each(function(){
-      batteryArray.push($(this).val());
+      var val1 = $(this).val();
+      if(val1 == "1")
+      {
+        batteryArray.push("Upto 3.5 Hours");
+        batteryArray.push("Upto 4 Hours");
+        batteryArray.push("Upto 5 Hours");
+        batteryArray.push("Upto 4.5 Hours");
+        batteryArray.push("Upto 6 Hours");
+        batteryArray.push("Upto 6.5 Hours");
+        batteryArray.push("Upto 7 Hours");
+        batteryArray.push("Upto 7.2 Hours");
+        batteryArray.push("Upto 8 Hours");
+        batteryArray.push("Upto 8.5 Hours");
+      }
+      if(val1 == "2")
+      {
+        batteryArray.push("Upto 5 Hours");
+        batteryArray.push("Upto 6 Hours");
+        batteryArray.push("Upto 6.5 Hours");
+        batteryArray.push("Upto 7 Hours");
+        batteryArray.push("Upto 7.2 Hours");
+        batteryArray.push("Upto 8 Hours");
+        batteryArray.push("Upto 8.5 Hours");
+      }
+      if(val1 == "3")
+      {
+        batteryArray.push("Upto 7 Hours");
+        batteryArray.push("Upto 8 Hours");
+        batteryArray.push("Upto 8.5 Hours");
+        batteryArray.push("Upto 7.2 Hours");
+      }
+      batteryArray.push("Upto 9 Hours");
+      batteryArray.push("Upto 10 Hours");
+      batteryArray.push("Upto 10.5 Hours");
+      batteryArray.push("Upto 11 Hours");
+      batteryArray.push("Upto 12 Hours");
+      batteryArray.push("Upto 40 Hours");
+      batteryArray.push("Upto 45 Hours");
     });
 
     $.ajax({

@@ -161,6 +161,24 @@ module.exports.search = function(req, res, next)
   })
 }
 
+module.exports.compItems = function(req, res, next)
+{
+  var requestOptions = {
+    url: 'http://localhost:3000/api/compItems',
+    method: 'POST',
+    json: req.body
+  }
+  request(requestOptions, function(error, response, body){
+    if(error)
+    {
+      return res.status(500).send(error);
+    }
+    else {
+      res.render('comparison',{});
+    }
+  });
+}
+
 module.exports.filter = function(req, res, next)
 {
   var requestOptions = {

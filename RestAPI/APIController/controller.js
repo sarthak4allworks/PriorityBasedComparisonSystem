@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var PythonShell = require('python-shell');
 mongoose.Promise = global.Promise;
 
 var product = mongoose.model('product');
@@ -65,6 +66,77 @@ module.exports.key_i = function(req, res, next)
   });
 }
 
+module.exports.compItems = function(req, res, next)
+{
+  var v1 = req.body.dat1;
+  var v2 = req.body.dat2;
+  var v3 = req.body.dat3;
+  var v4 = req.body.dat4;
+  var v = "";
+  if(v1 == "")
+  {
+    console.log("Here");
+    if(v2 == "")
+    {
+      if(v3 == "")
+      {
+        v = v+v4;
+      }
+      else {
+        v = v+v3;
+        if(v4 != "")
+        {
+          v = v+" "+v4;
+        }
+      }
+    }
+    else {
+      v = v+v2;
+      if(v3 != "")
+      {
+        v = v+" "+v3;
+      }
+      if(v4 != "")
+      {
+        v = v+" "+v4;
+      }
+    }
+  }
+  else {
+    v = v+v1;
+    if(v2 != "")
+    {
+      v = v+" "+v2;
+    }
+    if(v3 != "")
+    {
+      v = v+" "+v3;
+    }
+    if(v4 != "")
+    {
+      v = v+" "+v4;
+    }
+  }
+  console.log(v);
+  var options = {
+  mode: 'C:/Users/sarthak agarwal/AppData/Local/Programs/Python/Python36-32',
+  pythonPath: 'python',
+  pythonOptions: ['-u'],
+  scriptPath: 'Comparator/',
+  args: [v]
+};
+
+PythonShell.run('MainComparator.py', options, function (err, results) {
+  if (err)
+  {
+    console.log(err);
+  }
+  console.log("Here is the result");
+  console.log(results);
+});
+
+}
+
 module.exports.filter = function(req, res, next)
 {
   // console.log("we are here in filter api");
@@ -106,19 +178,33 @@ module.exports.filter = function(req, res, next)
   // console.log("battery "+battery);
 
   if((parrl == 0 && brandl == 0 && scnl == 0 && screenresolutionl == 0 && cpul == 0 && rpml == 0 && hdl == 0 && raml == 0 && osl == 0 && batteryl == 0) ||
-  (parrl == 8 && brandl == 18 && scnl == 7 && screenresolutionl == 4 && cpul == 6 && rpml == 6 && hdl == 4 && raml == 5 && osl == 10 && batteryl == 4))
+  (parrl == 8 && brandl == 18 && scnl == 7 && screenresolutionl == 4 && cpul == 6 && rpml == 5 && hdl == 4 && raml == 5 && osl == 9 && batteryl == 4))
   {
     console.log("API SUCCESS");
     res.json({STATUS:"SUCCESS"});
   }
   else {
     // console.log("I am here with filtering 1");
-    console.log(scn);
-    console.log(scn[0]+" "+scn[1]+" "+scn[scnl-1]);
+    // console.log(scn);
+    // console.log(scn[0]+" "+scn[1]+" "+scn[scnl-1]);
     // product.find({$and:[{"specifications.full_specs.Processor.Brand": {$in: cpu}}]}).find({brand:{$in: brand}})
     // console.log(parr[0]+" "+parr[parrl-1]);
     // product.find({price:{$gt:parr[0], $lt:parr[parrl-1]}})
-    product.find({$or:[{"specifications.full_specs.Display.Touch":scn[0]},{"specifications.full_specs.Display.Size":{$gte:scn[1], $lte:scn[scnl-1]}}]}).exec(function(error, result){
+    // product.find({$or:[{"specifications.full_specs.Display.Touch":scn[0]},{"specifications.full_specs.Display.Size":{$gte:scn[1], $lte:scn[scnl-1]}}]})
+    // console.log(screenresolution);
+    // console.log(cpu);
+    // product.find({"specifications.full_specs.Display.Resolution":{$in:screenresolution}})
+    // product.find({$or:[{"specifications.full_specs.Processor.Brand": {$in: cpu}},{"specifications.full_specs.Processor.Series": {$in: cpu}}]})
+    // console.log(rpm);
+    // product.find({"specifications.full_specs.Memory.Hard Disk Speed": {$in:rpm}})
+    // console.log(hd);
+    // product.find({$or:[{"specifications.full_specs.Memory.Hard Disk Capacity": {$in:hd}}, {"specifications.full_specs.Memory.Hard Disk Capacity": {$gte:hd[0]}}]})
+    // console.log(ram);
+    // product.find({$or:[{"specifications.full_specs.Memory.RAM": {$in:ram}}, {"specifications.full_specs.Memory.RAM": {$gte:ram[0]}}]})
+    // console.log(os);
+    // product.find({"specifications.full_specs.General.OS": {$in:os}})
+    console.log(battery);
+    product.find({"specifications.full_specs.Battery.Battery Backup":{$in:battery}}).exec(function(error, result){
       if(error){
         console.log("here is an error in filtering");
       }
