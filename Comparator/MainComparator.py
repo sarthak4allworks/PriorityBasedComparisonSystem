@@ -1,6 +1,6 @@
 from sys import argv
 from CalcSpecScore import calcSpecScore
-keys = argv[1:]
+keys = argv[1:].split(' ')
 product_scores = {}
 sum_scores = {}
 def main_comparator(keys):

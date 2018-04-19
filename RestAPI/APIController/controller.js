@@ -72,51 +72,51 @@ module.exports.compItems = function(req, res, next)
   var v2 = req.body.dat2;
   var v3 = req.body.dat3;
   var v4 = req.body.dat4;
-  var v = "";
-  if(v1 == "")
-  {
-    console.log("Here");
-    if(v2 == "")
-    {
-      if(v3 == "")
-      {
-        v = v+v4;
-      }
-      else {
-        v = v+v3;
-        if(v4 != "")
-        {
-          v = v+" "+v4;
-        }
-      }
-    }
-    else {
-      v = v+v2;
-      if(v3 != "")
-      {
-        v = v+" "+v3;
-      }
-      if(v4 != "")
-      {
-        v = v+" "+v4;
-      }
-    }
-  }
-  else {
-    v = v+v1;
-    if(v2 != "")
-    {
-      v = v+" "+v2;
-    }
-    if(v3 != "")
-    {
-      v = v+" "+v3;
-    }
-    if(v4 != "")
-    {
-      v = v+" "+v4;
-    }
-  }
+  var v = v1+" "+v2+" "+v3+" "+v4;
+  // if(v1 == "")
+  // {
+  //   console.log("Here");
+  //   if(v2 == "")
+  //   {
+  //     if(v3 == "")
+  //     {
+  //       v = v+v4;
+  //     }
+  //     else {
+  //       v = v+v3;
+  //       if(v4 != "")
+  //       {
+  //         v = v+" "+v4;
+  //       }
+  //     }
+  //   }
+  //   else {
+  //     v = v+v2;
+  //     if(v3 != "")
+  //     {
+  //       v = v+" "+v3;
+  //     }
+  //     if(v4 != "")
+  //     {
+  //       v = v+" "+v4;
+  //     }
+  //   }
+  // }
+  // else {
+  //   v = v+v1;
+  //   if(v2 != "")
+  //   {
+  //     v = v+" "+v2;
+  //   }
+  //   if(v3 != "")
+  //   {
+  //     v = v+" "+v3;
+  //   }
+  //   if(v4 != "")
+  //   {
+  //     v = v+" "+v4;
+  //   }
+  // }
   console.log(v);
   var options = {
   mode: 'C:/Users/sarthak agarwal/AppData/Local/Programs/Python/Python36-32',
